@@ -8,18 +8,18 @@ const sand = 25000000
 
 console.log('Started single-thread calculations...\n')
 
-let time = performance.now()
+let start = Date.now()
 
 single(cores, sand)
 
-time = performance.now() - time
+let time = Date.now() - start
 console.log(`\nEstimated time in single-thread: ${Math.round(time)}ms\n`)
 
 console.log('Started multi-thread calculations...\n')
 
-time = performance.now()
+start = Date.now()
 
 await multi(cores, sand)
 
-time = performance.now() - time
+time = Date.now() - start
 console.log(`\nEstimated time in multi-thread: ${Math.round(time)}ms`)

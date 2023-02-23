@@ -12,9 +12,9 @@ const calculate = (n) => {
 
 }
 
-export const performCalculations = () => {
-  for (let i=0; i<8; i++) {
-    const ans = calculate(25000000)
+export const performCalculations = (cores, sand) => {
+  for (let i=0; i<cores; i++) {
+    const ans = calculate(sand)
 
     console.log(`Calculated Pi: ${ans}`)
     console.log(`Real Pi: ${Math.PI}`)

@@ -1,7 +1,5 @@
-import {cpus} from 'node:os'
 import {Worker} from 'node:worker_threads'
 
-const cores = cpus().length
 const answers = []
 
 const runService = (workerData) => {
@@ -20,16 +18,16 @@ const run = async (i) => {
   const result = await runService(i)
 }
 
-const createRuns = () => {
+const createRuns = (cores, sand) => {
   const promiseArray = []
   for (let i=0; i<cores; i++) {
-    promiseArray.push(run(25000000))
+    promiseArray.push(run(sand))
   }
   return promiseArray
 }
 
-export const performCalculations = async () => {
-  await Promise.all(createRuns())
+export const performCalculations = async (cores, sand) => {
+  await Promise.all(createRuns(cores, sand))
   answers.forEach((ans) => {
     console.log(`Calculated Pi: ${ans}`)
     console.log(`Real Pi: ${Math.PI}`)
